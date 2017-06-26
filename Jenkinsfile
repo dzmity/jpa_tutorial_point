@@ -26,7 +26,8 @@ pipeline {
                 junit '**/target/*.xml'
             }
             failure {
-                mail (to: 'work.d.rafalovich@gmail.com', subject: 'The Pipeline failed :(' )
+                mail (to: 'work.d.rafalovich@gmail.com', subject: 'The Pipeline failed :(' ,
+                body: "Please go to ${env.BUILD_URL}.")
             }
     }
 
