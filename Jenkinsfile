@@ -21,14 +21,13 @@ pipeline {
             }
         }
     }
-
-       post {
+    post {
             always {
                 junit '**/target/*.xml'
             }
             failure {
-                mail to: work.d.rafalovich@gmail.com, subject: 'The Pipeline failed :('
+                mail to: team@example.com, subject: 'The Pipeline failed :('
             }
-        }
     }
+
 }
