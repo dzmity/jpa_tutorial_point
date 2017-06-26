@@ -13,12 +13,21 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                junit '**/target/*.xml'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+            }
+        }
+    }
+
+       post {
+            always {
+                junit '**/target/*.xml'
+            }
+            failure {
+                mail to: work.d.rafalovich@gmail.com, subject: 'The Pipeline failed :('
             }
         }
     }
