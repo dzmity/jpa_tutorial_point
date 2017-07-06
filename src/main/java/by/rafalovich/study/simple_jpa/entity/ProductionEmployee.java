@@ -3,6 +3,7 @@ package by.rafalovich.study.simple_jpa.entity;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -10,18 +11,18 @@ import javax.persistence.PrimaryKeyJoinColumn;
 //@PrimaryKeyJoinColumn(referencedColumnName="EMPL_ID")
 public class ProductionEmployee extends Employee
 {
-    private String commandName;
+    private DevelopmentTeam developmentTeam;
     private String positionTitle;
 
-    @Column(name = "COMMAND_NAME")
-    public String getCommandName()
+    @ManyToOne
+    public DevelopmentTeam getDevelopmentTeam()
     {
-        return commandName;
+        return developmentTeam;
     }
 
-    public void setCommandName(String commandName)
+    public void setDevelopmentTeam(DevelopmentTeam developmentTeam)
     {
-        this.commandName = commandName;
+        this.developmentTeam = developmentTeam;
     }
 
     @Column(name = "POSITION_TITLE")

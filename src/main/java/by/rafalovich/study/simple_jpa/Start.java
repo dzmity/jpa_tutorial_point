@@ -1,7 +1,10 @@
 package by.rafalovich.study.simple_jpa;
 
+import by.rafalovich.study.simple_jpa.dao.DevelopmentTeamDao;
 import by.rafalovich.study.simple_jpa.dao.EmployeeDao;
+import by.rafalovich.study.simple_jpa.dao.impl.DevelopmentTeamDaoImpl;
 import by.rafalovich.study.simple_jpa.dao.impl.EmployeeDaoImpl;
+import by.rafalovich.study.simple_jpa.entity.DevelopmentTeam;
 import by.rafalovich.study.simple_jpa.entity.Employee;
 import by.rafalovich.study.simple_jpa.entity.NonProductionEmployee;
 import by.rafalovich.study.simple_jpa.entity.ProductionEmployee;
@@ -12,11 +15,15 @@ public class Start
 {
     public static void main(String[] args)
     {
-        Employee employee = createEmployee();
-        ProductionEmployee productionEmployee = createProductionEmployee();
-        NonProductionEmployee nonProductionEmployee = createNonProductionEmployee();
+//        Employee employee = createEmployee();
+
+//        NonProductionEmployee nonProductionEmployee = createNonProductionEmployee();
 
         EmployeeDao employeeDao = new EmployeeDaoImpl();
+        DevelopmentTeamDao developmentTeamDao = new DevelopmentTeamDaoImpl();
+        developmentTeamDao.create(createDevTeam());
+        DevelopmentTeam developmentTeam = developmentTeamDao.find(1L);
+        ProductionEmployee productionEmployee = createProductionEmployee(developmentTeam);
 //        employeeDao.create(employee);
 //        employee.setEmployeeSalary(150);
 //        employeeDao.update(employee);
@@ -26,7 +33,7 @@ public class Start
 //        employeeDao.findByName("Dzmitry").stream().forEach(e -> System.out.println(e));
 //        employeeDao.findByPosition("devEloper").stream().forEach(e -> System.out.println(e));
         employeeDao.create(productionEmployee);
-        employeeDao.create(nonProductionEmployee);
+//        employeeDao.create(nonProductionEmployee);
         closeEMF();
     }
 
@@ -39,14 +46,14 @@ public class Start
         return employee;
     }
 
-    private static ProductionEmployee createProductionEmployee()
+    private static ProductionEmployee createProductionEmployee(DevelopmentTeam team)
     {
         ProductionEmployee employee = new ProductionEmployee();
         employee.setEmployeeName("Dzmitry_Rafalovich");
         employee.setEmployeeSalary(500);
         employee.setEmployeePosition("developer");
         employee.setPositionTitle("D1");
-        employee.setCommandName("Phoenix");
+        employee.setDevelopmentTeam(team);
         return employee;
     }
 
@@ -58,5 +65,12 @@ public class Start
         employee.setEmployeePosition("plumber");
         employee.setOfficeAddress("N58");
         return employee;
+    }
+
+    private static DevelopmentTeam createDevTeam()
+    {
+        DevelopmentTeam team = new DevelopmentTeam();
+        team.setTeamName("Phoenix");
+        return team;
     }
 }
