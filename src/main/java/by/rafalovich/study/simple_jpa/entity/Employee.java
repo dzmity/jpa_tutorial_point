@@ -2,17 +2,26 @@ package by.rafalovich.study.simple_jpa.entity;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.persistence.Access;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import static javax.persistence.AccessType.PROPERTY;
+
 @Entity
 @Table(schema = "home_dzmitry_rafalovich", name = "EMPLOYEES")
+@Access(value = PROPERTY)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type")
 @NamedQueries({
         @NamedQuery(name = "findByMinSalary", query = "from Employee e where e.employeeSalary >= :employeeSalary"),
         @NamedQuery(name = "findByName", query = "from Employee e where e.employeeName = :employeeName"),

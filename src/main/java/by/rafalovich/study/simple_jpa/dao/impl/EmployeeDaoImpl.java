@@ -1,13 +1,12 @@
 package by.rafalovich.study.simple_jpa.dao.impl;
 
 import by.rafalovich.study.simple_jpa.dao.EmployeeDao;
-import by.rafalovich.study.simple_jpa.dao.IDao;
 import by.rafalovich.study.simple_jpa.entity.Employee;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class EmployeeDaoImpl extends EmployeeDao implements IDao<Employee>
+public class EmployeeDaoImpl extends EmployeeDao
 {
     private static final String FIND_BY_MIN_SALARY_QUERY_NAME = "findByMinSalary";
     private static final String FIND_BY_NAME_QUERY_NAME = "findByName";

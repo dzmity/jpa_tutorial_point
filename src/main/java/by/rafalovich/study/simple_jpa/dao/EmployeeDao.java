@@ -4,7 +4,7 @@ import by.rafalovich.study.simple_jpa.entity.Employee;
 
 import java.util.List;
 
-public abstract class EmployeeDao extends JpaDao
+public abstract class EmployeeDao extends JpaDao implements IDao<Employee>
 {
     public abstract List<Employee> findByMinSalary(Integer employeeSalary);
 
