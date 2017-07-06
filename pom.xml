@@ -11,6 +11,7 @@
     <properties>
         <hibernate.version>5.2.10.Final</hibernate.version>
         <orcle.version>12.1.0.2</orcle.version>
+        <apache.commons.version>3.5</apache.commons.version>
     </properties>
 
     <dependencies>
@@ -19,15 +20,20 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.1.Final</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate.javax.persistence</groupId>-->
+            <!--<artifactId>hibernate-jpa-2.0-api</artifactId>-->
+            <!--<version>1.0.1.Final</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.github.noraui</groupId>
             <artifactId>ojdbc7</artifactId>
             <version>${orcle.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache.commons.version}</version>
         </dependency>
     </dependencies>
 </project>

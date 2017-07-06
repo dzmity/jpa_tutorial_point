@@ -1,10 +1,10 @@
 package by.rafalovich.study.simple_jpa.dao;
 
-public interface IDao<T> {
-
+public interface IDao<T>
+{
     void create(T t);
 
-    void delete(Long id);
+    T find(Long id);
 
     void delete(T t);
 
