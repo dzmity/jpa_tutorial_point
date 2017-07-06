@@ -13,7 +13,7 @@
             <property name="javax.persistence.jdbc.password" value="qwerty123" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
             <property name="hibernate.connection.autocommit" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <!--property name="hibernate.hbm2ddl.auto" value="create-drop" /
             drop all sequences and tables before test and create new instead of old
             by specified tables andcolumns in @Entity classes-->

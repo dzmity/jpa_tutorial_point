@@ -7,16 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(schema = "home_dzmitry_rafalovich", name = "EMPLOYEES")
+@NamedQueries({
+        @NamedQuery(name = "findByMinSalary", query = "from Employee e where e.employeeSalary >= :employeeSalary"),
+        @NamedQuery(name = "findByName", query = "from Employee e where e.employeeName = :employeeName"),
+        @NamedQuery(name = "findByPosition", query = "from Employee e where e.employeePosition LIKE lower(:employeePosition)")})
 public class Employee
 {
     private Long employeeId;
     private String employeeName;
     private Integer employeeSalary;
-    private String employeeDeg;
+    private String employeePosition;
 
     @Id
     @Column(name = "EMPL_ID")
@@ -53,15 +59,15 @@ public class Employee
         this.employeeSalary = employeeSalary;
     }
 
-    @Column(name = "EMPL_DEG")
-    public String getEmployeeDeg()
+    @Column(name = "EMPL_POSITION")
+    public String getEmployeePosition()
     {
-        return employeeDeg;
+        return employeePosition;
     }
 
-    public void setEmployeeDeg(String employeeDeg)
+    public void setEmployeePosition(String employeePosition)
     {
-        this.employeeDeg = employeeDeg;
+        this.employeePosition = employeePosition;
     }
 
     @Override
@@ -71,7 +77,7 @@ public class Employee
                 .append("employeeId", employeeId)
                 .append("employeeName", employeeName)
                 .append("employeeSalary", employeeSalary)
-                .append("employeeDeg", employeeDeg)
+                .append("employeePosition", employeePosition)
                 .toString();
     }
 }

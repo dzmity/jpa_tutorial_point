@@ -1,5 +1,6 @@
 package by.rafalovich.study.simple_jpa;
 
+import by.rafalovich.study.simple_jpa.dao.EmployeeDao;
 import by.rafalovich.study.simple_jpa.dao.impl.EmployeeDaoImpl;
 import by.rafalovich.study.simple_jpa.entity.Employee;
 
@@ -11,12 +12,16 @@ public class Start
     {
         Employee employee = createEmployee();
 
-        EmployeeDaoImpl employeeDao = new EmployeeDaoImpl();
-        employeeDao.create(employee);
-        employee.setEmployeeSalary(150);
-        employeeDao.update(employee);
-        System.out.println(employeeDao.find(1L));
-        employeeDao.delete(employee);
+        EmployeeDao employeeDao = new EmployeeDaoImpl();
+//        employeeDao.create(employee);
+//        employee.setEmployeeSalary(150);
+//        employeeDao.update(employee);
+//        System.out.println(employeeDao.find(1L));
+//        employeeDao.delete(employee);
+//        employeeDao.findByMinSalary(80).stream().forEach(e -> System.out.println(e));
+//        employeeDao.findByName("Dzmitry").stream().forEach(e -> System.out.println(e));
+//        employeeDao.findByPosition("devEloper").stream().forEach(e -> System.out.println(e));
+
         closeEMF();
     }
 
@@ -25,7 +30,7 @@ public class Start
         Employee employee = new Employee();
         employee.setEmployeeName("Dzmitry");
         employee.setEmployeeSalary(50);
-        employee.setEmployeeDeg("developer");
+        employee.setEmployeePosition("developer");
         return employee;
     }
 }
