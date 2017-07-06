@@ -22,7 +22,8 @@ import static javax.persistence.AccessType.PROPERTY;
 @Access(value = PROPERTY)
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name="type")
-@Inheritance( strategy = InheritanceType.JOINED )
+//@Inheritance( strategy = InheritanceType.JOINED )
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
 @NamedQueries({
         @NamedQuery(name = "findByMinSalary", query = "from Employee e where e.employeeSalary >= :employeeSalary"),
         @NamedQuery(name = "findByName", query = "from Employee e where e.employeeName = :employeeName"),

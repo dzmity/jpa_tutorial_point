@@ -7,7 +7,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 //@DiscriminatorValue( value="PROD" )
-@PrimaryKeyJoinColumn(referencedColumnName="EMPL_ID")
+//@PrimaryKeyJoinColumn(referencedColumnName="EMPL_ID")
 public class ProductionEmployee extends Employee
 {
     private String commandName;
