@@ -3,9 +3,11 @@ package by.rafalovich.study.simple_jpa.entity;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@DiscriminatorValue( value="PROD" )
+//@DiscriminatorValue( value="PROD" )
+@PrimaryKeyJoinColumn(referencedColumnName="EMPL_ID")
 public class ProductionEmployee extends Employee
 {
     private String commandName;
