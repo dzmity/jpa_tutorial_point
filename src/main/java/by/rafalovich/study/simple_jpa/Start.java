@@ -9,6 +9,9 @@ import by.rafalovich.study.simple_jpa.entity.Employee;
 import by.rafalovich.study.simple_jpa.entity.NonProductionEmployee;
 import by.rafalovich.study.simple_jpa.entity.ProductionEmployee;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static by.rafalovich.study.simple_jpa.dao.JpaDao.closeEMF;
 
 public class Start
@@ -18,11 +21,25 @@ public class Start
         EmployeeDao employeeDao = new EmployeeDaoImpl();
         DevelopmentTeamDao developmentTeamDao = new DevelopmentTeamDaoImpl();
 
-        DevelopmentTeam team = createDevTeam();
-        developmentTeamDao.create(team);
+        DevelopmentTeam team1 = createDevTeam();
+        DevelopmentTeam team2 = createDevTeam();
+        DevelopmentTeam team3 = createDevTeam();
 
-        ProductionEmployee productionEmployee = createProductionEmployee(team);
-        employeeDao.create(productionEmployee);
+        developmentTeamDao.create(team1);
+        developmentTeamDao.create(team2);
+        developmentTeamDao.create(team3);
+
+        List<DevelopmentTeam> teamList1 = Arrays.asList(team1, team2);
+        List<DevelopmentTeam> teamList2 = Arrays.asList(team1, team3);
+        List<DevelopmentTeam> teamList3 = Arrays.asList(team3, team2);
+
+        ProductionEmployee productionEmployee1 = createProductionEmployee(teamList1);
+        ProductionEmployee productionEmployee2 = createProductionEmployee(teamList2);
+        ProductionEmployee productionEmployee3 = createProductionEmployee(teamList3);
+
+        employeeDao.create(productionEmployee1);
+        employeeDao.create(productionEmployee2);
+        employeeDao.create(productionEmployee3);
 
         closeEMF();
     }
@@ -36,7 +53,7 @@ public class Start
         return employee;
     }
 
-    private static ProductionEmployee createProductionEmployee(DevelopmentTeam team)
+    private static ProductionEmployee createProductionEmployee(List<DevelopmentTeam> team)
     {
         ProductionEmployee employee = new ProductionEmployee();
         employee.setEmployeeName("Dzmitry_Rafalovich");
