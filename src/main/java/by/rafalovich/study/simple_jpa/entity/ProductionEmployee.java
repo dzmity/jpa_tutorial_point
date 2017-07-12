@@ -11,19 +11,19 @@ import javax.persistence.PrimaryKeyJoinColumn;
 //@PrimaryKeyJoinColumn(referencedColumnName="EMPL_ID")
 public class ProductionEmployee extends Employee
 {
-    private DevelopmentTeam developmentTeam;
+//    private DevelopmentTeam developmentTeam;
     private String positionTitle;
 
-    @ManyToOne
-    public DevelopmentTeam getDevelopmentTeam()
-    {
-        return developmentTeam;
-    }
-
-    public void setDevelopmentTeam(DevelopmentTeam developmentTeam)
-    {
-        this.developmentTeam = developmentTeam;
-    }
+//    @ManyToOne
+//    public DevelopmentTeam getDevelopmentTeam()
+//    {
+//        return developmentTeam;
+//    }
+//
+//    public void setDevelopmentTeam(DevelopmentTeam developmentTeam)
+//    {
+//        this.developmentTeam = developmentTeam;
+//    }
 
     @Column(name = "POSITION_TITLE")
     public String getPositionTitle()

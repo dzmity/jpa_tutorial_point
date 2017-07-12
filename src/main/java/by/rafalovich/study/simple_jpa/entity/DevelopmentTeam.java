@@ -6,7 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import java.util.List;
 
 import static javax.persistence.AccessType.PROPERTY;
 
@@ -17,6 +20,7 @@ public class DevelopmentTeam
 {
     private Long teamId;
     private String teamName;
+    private List<Employee> employees;
 
     @Id
     @GeneratedValue( strategy= GenerationType.AUTO )
@@ -40,5 +44,16 @@ public class DevelopmentTeam
     public void setTeamName(String teamName)
     {
         this.teamName = teamName;
+    }
+
+    @OneToMany
+    public List<Employee> getEmployees()
+    {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees)
+    {
+        this.employees = employees;
     }
 }
