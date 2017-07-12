@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -11,19 +12,19 @@ import javax.persistence.PrimaryKeyJoinColumn;
 //@PrimaryKeyJoinColumn(referencedColumnName="EMPL_ID")
 public class ProductionEmployee extends Employee
 {
-//    private DevelopmentTeam developmentTeam;
+    private DevelopmentTeam developmentTeam;
     private String positionTitle;
 
-//    @ManyToOne
-//    public DevelopmentTeam getDevelopmentTeam()
-//    {
-//        return developmentTeam;
-//    }
-//
-//    public void setDevelopmentTeam(DevelopmentTeam developmentTeam)
-//    {
-//        this.developmentTeam = developmentTeam;
-//    }
+    @OneToOne
+    public DevelopmentTeam getDevelopmentTeam()
+    {
+        return developmentTeam;
+    }
+
+    public void setDevelopmentTeam(DevelopmentTeam developmentTeam)
+    {
+        this.developmentTeam = developmentTeam;
+    }
 
     @Column(name = "POSITION_TITLE")
     public String getPositionTitle()

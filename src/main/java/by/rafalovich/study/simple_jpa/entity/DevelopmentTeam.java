@@ -20,7 +20,7 @@ public class DevelopmentTeam
 {
     private Long teamId;
     private String teamName;
-    private List<Employee> employees;
+//    private List<Employee> employees;
 
     @Id
     @GeneratedValue( strategy= GenerationType.AUTO )
@@ -46,14 +46,14 @@ public class DevelopmentTeam
         this.teamName = teamName;
     }
 
-    @OneToMany
-    public List<Employee> getEmployees()
-    {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees)
-    {
-        this.employees = employees;
-    }
+//    @OneToMany
+//    public List<Employee> getEmployees()
+//    {
+//        return employees;
+//    }
+//
+//    public void setEmployees(List<Employee> employees)
+//    {
+//        this.employees = employees;
+//    }
 }
